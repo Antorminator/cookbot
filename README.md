@@ -13,3 +13,5 @@ En esta primera versión, los chatbots trabajan con 3 ingredientes distintos y u
 * Ingrediente "***arroz***", para el cual se pueden elegir las categorías "***entrante***", "***principal***" o "***postre***".
 * Ingrediente "***pollo***", para el cual se pueden elegir las categorías "***entrante***" o "***principal***".
 * Ingrediente "***pescado***", para el cual se pueden elegir las categorías "***entrante***" o "***principal***".
+
+Adicionalmente, para los chatbots basados en **AIML** existe la posibilidad de **registrar recetas** nuevas y de solicitar un ingrediente-categoría **aleatorios**.
