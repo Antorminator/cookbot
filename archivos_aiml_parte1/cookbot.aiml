@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Cookbot: bot de recetas de cocina -->
+
+<aiml version="2.1">
+    
+    <!-- Introducción -->
+
+    <category>
+        <pattern># QUIERO COCINAR *</pattern>
+        <template>
+            <think>
+                <set name="ingrediente"><star index='2' /></set>
+            </think>
+            <condition name="ingrediente">
+                <li value="arroz">Perfecto, vamos a cocinar <set name="topic"><get name="ingrediente" /></set>! ¿Quieres cocinar un entrante, un principal o un postre?</li>
+                <li value="pollo">Perfecto, vamos a cocinar <set name="topic"><get name="ingrediente" /></set>! ¿Quieres cocinar un entrante o un principal?</li>
+                <li value="pescado">Perfecto, vamos a cocinar <set name="topic"><get name="ingrediente" /></set>! ¿Quieres cocinar un entrante o un principal?</li>
+                <li>No tengo recetas para ese ingrediente :(</li>
+            </condition>
+        </template>
+    </category>
+
+    <!-- Respuestas tras listar recetas -->
+    <category>
+        <pattern>*</pattern>
+        <that># ¿QUIERES COCINAR ALGO MÁS</that><!-- Aquí utilizo el # porque el texto asociado se puede usar con o sin la coletilla (ver en recetas) -->
+        <template>
+            <think>
+                <set name="respuesta"><star /></set>
+            </think>
+            <condition name="respuesta">
+                <li value="SI">¿Qué otra cosa quieres cocinar?</li>
+                <li value="NO">Que aproveche! Hasta pronto! :D</li>
+                <li>No te he entendido :( ¿Quieres cocinar algo más?</li>
+            </condition>
+        </template>
+    </category>
+
+    <category> <!-- Redirección a la pregunta principal para reiniciar la conversación -->
+        <pattern>*</pattern>
+        <that>¿QUÉ OTRA COSA QUIERES COCINAR</that>
+        <template><srai># QUIERO COCINAR <star /></srai></template><!-- Obsérvese que se debe redirigir con <star /> para que capte el valor introducido-->
+    </category>
+
+    <!-- Recetas por ingredientes -->
+
+    <topic name="arroz">
+
+        <category>
+            <pattern># ENTRANTE #</pattern>
+            <template>
+                Tengo las siguientes recetas de entrates con arroz:
+                
+                1- Sushi.
+                
+                2- Ensalada de arroz.
+                
+                3- Saquitos crujientes de arroz con marisco.
+
+                4- Tartaletas con arroz y gambas.
+
+                5- Flanes de arroz, cebolla y beicon.
+                
+                Introduce el número del entrante para ver su enlace
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that># INTRODUCE EL NÚMERO DEL ENTRANTE PARA VER SU ENLACE</that>
+            <template>
+                <think>
+                    <set name="numeroReceta"><star /></set>
+                </think>
+                <condition name="numeroReceta">
+                    <li value="1">https://www.directoalpaladar.com/recetario/27-recetas-sushi-para-celebrar-dia-mundial-sushi-al-gusto-todos</li>
+                    <li value="2">https://www.petitchef.es/recetas/entrante/ensalada-de-arroz-facil-y-rapida-fid-1570733/</li>
+                    <li value="3">https://sevilla.abc.es/gurme/recetas/saquitos-crujientes-de-arroz-con-marisco</li>
+                    <li value="4">https://www.lecturas.com/recetas/tartaletas-arroz-y-gambas_6410.html</li>
+                    <li value="5">https://www.divinacocina.es/flanes-de-arroz-cebolla-y-bacon/</li>
+                    <li>No tengo disponible ese número de receta :(</li>
+                </condition>
+                
+                ¿Quieres cocinar algo más?
+            </template>
+        </category>
+
+
+
+        <category>
+            <pattern># PRINCIPAL #</pattern>
+            <template>
+                Tengo las siguientes recetas de platos principales con arroz:
+                
+                1- Paella valenciana (no podía faltar!).
+                
+                2- Arroz con bogavante.
+                
+                3- Risotto de ajo negro con crujiente de parmesano.
+
+                4- Arroz con costillas.
+
+                5- Arroz con presa ibérica al romero.
+                
+                Introduce el número del plato para ver su enlace
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that># INTRODUCE EL NÚMERO DEL PLATO PARA VER SU ENLACE</that>
+            <template>
+                <think>
+                    <set name="numeroReceta"><star /></set>
+                </think>
+                <condition name="numeroReceta">
+                    <li value="1">https://www.directoalpaladar.com/recetas-de-arroces/paella-valenciana-receta-tradicional</li>
+                    <li value="2">https://www.bonviveur.es/recetas/arroz-con-bogavante</li>
+                    <li value="3">https://www.directoalpaladar.com/recetas-de-arroces/risotto-de-ajo-negro-con-crujiente-de-parmesano-receta-para-enamorar</li>
+                    <li value="4">https://www.pequerecetas.com/receta/arroz-con-costillas/</li>
+                    <li value="5">https://gastronomiaycia.republica.com/2020/05/12/arroz-con-presa-de-cerdo-iberico-al-romero-tu-receta-de-arroz-para-el-proximo-domingo/</li>
+                    <li>No tengo disponible ese número de receta :(</li>
+                </condition>
+                
+                ¿Quieres cocinar algo más?
+            </template>
+        </category>
+
+
+
+        <category>
+            <pattern># POSTRE #</pattern>
+            <template>
+                Tengo las siguientes recetas de postres con arroz:
+                
+                1- Arroz con leche.
+                
+                2- Arroz perfumado con cardamomo y rosas.
+                
+                3- Pastel de arroz, chocolate y nueces.
+
+                4- Arroz dulce al horno.
+
+                5- Arroz jazmín con mango.
+                
+                Introduce el número del postre para ver su enlace
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that># INTRODUCE EL NÚMERO DEL POSTRE PARA VER SU ENLACE</that>
+            <template>
+                <think>
+                    <set name="numeroReceta"><star /></set>
+                </think>
+                <condition name="numeroReceta">
+                    <li value="1">https://www.recetasdeescandalo.com/como-hacer-arroz-con-leche-receta-de-postre-casero-tradicional/</li>
+                    <li value="2">https://gastronomiaycia.republica.com/2012/10/02/arroz-perfumado-con-cardamomo-y-rosas/</li>
+                    <li value="3">https://gastronomiaycia.republica.com/2013/03/17/pastel-de-arroz-chocolate-y-nueces/</li>
+                    <li value="4">https://www.rebanando.com/receta-46840-arroz-al-horno-dulce-o-pastel-de-arroz-con-leche.htm</li>
+                    <li value="5">https://mahatmarice.com/es/recetas/arroz-con-mango/</li>
+                    <li>No tengo disponible ese número de receta :(</li>
+                </condition>
+                
+                ¿Quieres cocinar algo más?
+            </template>
+        </category>
+
+    </topic>
+
+    <topic name="pollo">
+
+        <category>
+            <pattern># ENTRANTE #</pattern>
+            <template>
+                Tengo las siguientes recetas de entrates con pollo:
+                
+                1- Nuggets de pollo caseros.
+                
+                2- Gyozas de pollo, zanahoria y champiñones.
+                
+                3- Ensalada césar con pollo.
+
+                4- Brochetas de pollo al estilo Satay.
+
+                5- Paté de pollo al oporto.
+                
+                Introduce el número del entrante para ver su enlace
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that># INTRODUCE EL NÚMERO DEL ENTRANTE PARA VER SU ENLACE</that>
+            <template>
+                <think>
+                    <set name="numeroReceta"><star /></set>
+                </think>
+                <condition name="numeroReceta">
+                    <li value="1">https://www.directoalpaladar.com/recetas-de-aperitivos/como-hacer-nuggets-caseros-receta-con-thermomix</li>
+                    <li value="2">https://www.petitchef.es/recetas/entrante/gyozas-de-pollo-zanahoria-y-champinones-fid-1575328</li>
+                    <li value="3">https://www.recetasderechupete.com/receta-de-ensalada-cesar/681/</li>
+                    <li value="4">https://www.directoalpaladar.com/tapas-y-pinchos/brochetas-de-pollo-estilo-satay-receta-para-el-picoteo</li>
+                    <li value="5">http://www.nomecomesnada.es/pate-al-oporto/</li>
+                    <li>No tengo disponible ese número de receta :(</li>
+                </condition>
+                
+                ¿Quieres cocinar algo más?
+            </template>
+        </category>
+
+
+
+        <category>
+            <pattern># PRINCIPAL #</pattern>
+            <template>
+                Tengo las siguientes recetas de platos principales con pollo:
+                
+                1- Pollo a la naranja.
+                
+                2- Pollo teriyaki.
+                
+                3- Albóndigas de pollo.
+
+                4- Pollo con mostaza y cebolla caramelizada.
+
+                5- Pollo tikka masala.
+                
+                Introduce el número del plato para ver su enlace
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that># INTRODUCE EL NÚMERO DEL PLATO PARA VER SU ENLACE</that>
+            <template>
+                <think>
+                    <set name="numeroReceta"><star /></set>
+                </think>
+                <condition name="numeroReceta">
+                    <li value="1">https://www.cocinacaserayfacil.net/pollo-ala-naranja/</li>
+                    <li value="2">https://www.recetasderechupete.com/como-preparar-pollo-teriyaki-de-manera-facil-y-rapida/9848/</li>
+                    <li value="3">https://www.cocinacaserayfacil.net/albondigas-de-pollo-en-salsa-de-cebolla/</li>
+                    <li value="4">https://www.directoalpaladar.com/recetas-de-carnes-y-aves/receta-pollo-salsa-cremosa-mostaza-champinones-cebolla-caramelizada-para-mojar-pan-disfrutar-tupper</li>
+                    <li value="5">https://www.directoalpaladar.com/recetas-de-carnes-y-aves/pollo-tikka-masala-receta-pollo-especiado-popular-mundo</li>
+                    <li>No tengo disponible ese número de receta :(</li>
+                </condition>
+                
+                ¿Quieres cocinar algo más?
+            </template>
+        </category>
+
+    </topic>
+
+    <topic name="pescado">
+
+        <category>
+            <pattern># ENTRANTE #</pattern>
+            <template>
+                Tengo las siguientes recetas de entrates de pescado:
+                
+                1- Salmón marinado.
+                
+                2- Bombones de atún con mayonesa.
+                
+                3- Brandada de bacalao.
+
+                4- Almejas a la marinera.
+
+                5- Vieiras con tomate, hierbabuena y lima.
+                
+                Introduce el número del entrante para ver su enlace
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that># INTRODUCE EL NÚMERO DEL ENTRANTE PARA VER SU ENLACE</that>
+            <template>
+                <think>
+                    <set name="numeroReceta"><star /></set>
+                </think>
+                <condition name="numeroReceta">
+                    <li value="1">https://www.pequerecetas.com/receta/salmon-marinado/</li>
+                    <li value="2">https://www.juliaysusrecetas.com/2016/08/bombones-de-atun-con-mayonesa.html</li>
+                    <li value="3">https://www.hogarmania.com/cocina/recetas/pescados-mariscos/brandada-bacalao-42089.html</li>
+                    <li value="4">https://elmundoenrecetas.com/receta/almejas-a-la-marinera</li>
+                    <li value="5">https://www.directoalpaladar.com/recetas-de-pescados-y-mariscos/vieiras-a-la-plancha-con-agua-de-tomate-a-la-hierbabuena-y-lima-receta-ligera</li>
+                    <li>No tengo disponible ese número de receta :(</li>
+                </condition>
+                
+                ¿Quieres cocinar algo más?
+            </template>
+        </category>
+
+
+
+        <category>
+            <pattern># PRINCIPAL #</pattern>
+            <template>
+                Tengo las siguientes recetas de platos principales de pescado:
+                
+                1- Salmón con salsa de eneldo.
+                
+                2- Lubina a la donostiarra.
+                
+                3- Dorada a la sal.
+
+                4- Rodaballo a la vizcaína con almejas.
+
+                5- Pastel de merluza y gambas.
+                
+                Introduce el número del plato para ver su enlace
+            </template>
+        </category>
+
+        <category>
+            <pattern>*</pattern>
+            <that># INTRODUCE EL NÚMERO DEL PLATO PARA VER SU ENLACE</that>
+            <template>
+                <think>
+                    <set name="numeroReceta"><star /></set>
+                </think>
+                <condition name="numeroReceta">
+                    <li value="1">https://www.divinacocina.es/salmon-con-salsa-de-eneldo/</li>
+                    <li value="2">https://www.directoalpaladar.com/recetas-de-pescados-y-mariscos/lubina-a-la-donostiarra-recetas-de-navidad</li>
+                    <li value="3">https://www.recetasderechupete.com/dorada-a-la-sal-y-al-horno-receta-paso-a-paso/11648/</li>
+                    <li value="4">https://www.lecturas.com/recetas/rodaballo-almejas-a-vizcaina_8839.html</li>
+                    <li value="5">https://www.bonviveur.es/recetas/pastel-de-merluza-y-gambas</li>
+                    <li>No tengo disponible ese número de receta :(</li>
+                </condition>
+                
+                ¿Quieres cocinar algo más?
+            </template>
+        </category>
+
+    </topic>
+
+    <!-- Parte de aprendizaje -->
+    <category>
+        <pattern># QUIERO REGISTRAR UNA RECETA NUEVA #</pattern>
+        <template>
+            Perfecto, vamos a registrar una receta nueva. Copia y pega en enlace a continuación
+        </template>
+    </category>
+
+    <category>
+        <pattern>*</pattern>
+        <that>COPIA Y PEGA EN ENLACE A CONTINUACIÓN</that>
+        <template>
+            <think>
+                <condition name="enlace"> <!-- Antes de concatenar el enlace introducido al listado de recetas, compruebo que la variable esté definida -->
+                    <li value="unknown"><set name="enlace"> </set></li>
+                </condition>
+                <set name="enlace"><get name="enlace"></get> <star /></set> <!-- Concatenación de recetas para guardar un histórico -->
+            </think>
+            <learn>
+                <category>
+                    <pattern>MUÉSTRAME MIS RECETAS</pattern>
+                    <template><get name="enlace"></get></template>
+                </category>
+            </learn>
+            Receta guardada! ;)
+        </template>
+    </category>    
+
+    <!-- Parte de aleatoriedad -->
+    <category>
+        <pattern>NO SÉ QUE COCINAR</pattern>
+        <template>
+            <think>
+                <random><!-- Asignación aleatoria de un topic -->
+                    <li><set name="topic">ARROZ</set></li>
+                    <li><set name="topic">POLLO</set></li>
+                    <li><set name="topic">PESCADO</set></li>
+                </random>
+            </think>
+            <random><!-- Redirección automática a una categoría de platos: entrantes, principales o postres -->
+                <li><srai># ENTRANTE #</srai></li>
+                <li><srai># PRINCIPAL #</srai></li>
+                <!-- <li><srai># POSTRE #</srai></li> -->
+            </random>
+        </template>
+    </category>
+
+</aiml>
