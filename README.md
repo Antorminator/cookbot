@@ -1,5 +1,5 @@
 # cookbot
-El proyecto "cookbot" se ha desarrollado con el objetivo de investigar el uso combinado, como chatbot, del estándar AIML y tecnologías de Inteligencia Artificial.
+El proyecto "*cookbot*" se ha desarrollado con el objetivo de investigar el uso combinado, como chatbot, del estándar AIML y tecnologías de Inteligencia Artificial.
 
 Para ello, el proyecto se divide en 3 partes:
 
@@ -15,3 +15,33 @@ En esta primera versión, los chatbots trabajan con 3 ingredientes distintos y u
 * Ingrediente "***pescado***", para el cual se pueden elegir las categorías "***entrante***" o "***principal***".
 
 Adicionalmente, para los chatbots basados en **AIML** existe la posibilidad de **registrar recetas** nuevas y de solicitar un ingrediente-categoría **aleatorios**.
+
+Para la creación, entrenamiento y ejecución del modelo de aprendizaje automático, se ha utilizado la plataforma http://machinelearningforkids.co.uk.
+
+## Ejecución
+Para la ejecución del los chatbots basados en AIML, debe de instalarse el framework Python Program-Y (https://github.com/keiffster/program-y):
+
+`%pip install programy`
+
+Ejecución en consola:
+
+`python3 parteX.py # Donde X = nº del chatbot a ejecutar (1, 2 ó 3)`
+
+## Patrones reconocidos por los esquemas AIML
+\# QUIERO COCINAR \*
+
+\# ENTRANTE \#
+
+\# PRINCIPAL \#
+
+\# POSTRE \#
+
+\# QUIERO REGISTRAR UNA RECETA NUEVA \#
+
+MUÉSTRAME MIS RECETAS
+
+NO SÉ QUE COCINAR
+
+## Vídeo demostrativo
+
+https://youtu.be/yg7t5GXy4vI
