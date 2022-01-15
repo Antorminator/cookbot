@@ -7,7 +7,7 @@ try:
         
         answer = chatbot.ask_question(input('>')) # Lanzamiento del chatbot AIML con lo que introduzca el usuario
         
-        if answer!='None':
+        if answer != None:
             print(answer)
         else:
             print('Disculpa, no te he entendido, ¿quieres cocinar arroz, pollo o pescado?')
