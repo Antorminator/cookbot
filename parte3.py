@@ -75,14 +75,14 @@ print(chatbot.ask_question(topic))
 try:
     answer=''
 
-    while answer!='Que aproveche! Hasta pronto! :D.': # La condición de salida del programa es el mensaje de despedida del chatbot (AIML)
+    while answer != 'Que aproveche! Hasta pronto! :D.': # La condición de salida del programa es el mensaje de despedida del chatbot (AIML)
         
-        answer=chatbot.ask_question(input('>')) # Llamada al chatbot AIML
+        answer = chatbot.ask_question(input('>')) # Llamada al chatbot AIML
 
         # Con el siguiente if compruebo respuestas clave del chatbot AIML
         # Condición 1 = se reinicia la conversación, por lo que igual que se hace al principio, se llama al modelo de ML
         # Condición 2: AIML no ha entendido la respuesta, por lo que se llama al modelo de ML para intentar averiguar el topic
-        if answer == '¿Qué otra cosa quieres cocinar?' or answer=='None': 
+        if answer == '¿Qué otra cosa quieres cocinar?' or answer == None: 
         
             answer=answer.replace('None','Mmm, no te he entendido. ¿Qué otra cosa quieres cocinar?') # Para no devolver "None"
             print(answer)
