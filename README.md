@@ -45,3 +45,58 @@ NO SÉ QUE COCINAR
 ## Vídeo demostrativo
 
 https://youtu.be/yg7t5GXy4vI
+
+## Ejemplo de conversación
+```bash
+¿Qué quieres cocinar hoy? # Ejecución del modelo de ML
+>Me apetece un buen plato de arroz
+
+Perfecto, vamos a cocinar arroz ! ¿Quieres cocinar un entrante, un principal o un postre? # Clasificación del topic por ML y envío a AIML
+>un principal
+
+Tengo las siguientes recetas de platos principales con arroz: 
+
+1- Paella valenciana (no podía faltar!). 
+2- Arroz con bogavante. 
+3- Risotto de ajo negro con crujiente de parmesano. 
+4- Arroz con costillas. 
+5- Arroz con presa ibérica al romero. 
+
+Introduce el número del plato para ver su enlace.
+>2
+
+https://www.bonviveur.es/recetas/arroz-con-bogavante 
+¿Quieres cocinar algo más?
+>Quiero registrar una receta nueva # Registro de información directamente con AIML
+
+Perfecto, vamos a registrar una receta nueva. Copia y pega en enlace a continuación.
+>Lubina a la sal www.enlace-a.receta
+
+Receta guardada! ;)
+>Muéstrame mis recetas    
+
+Lubina a la sal www.enlace-a.receta
+>No sé que cocinar # Llamada a suministro aleatorio de recetas
+
+Tengo las siguientes recetas de platos principales de pescado:
+                
+1- Salmón con salsa de eneldo.
+
+2- Lubina a la donostiarra.
+
+3- Dorada a la sal.
+
+4- Rodaballo a la vizcaína con almejas.
+
+5- Pastel de merluza y gambas.
+
+Introduce el número del plato para ver su enlace
+>2
+
+https://www.directoalpaladar.com/recetas-de-pescados-y-mariscos/lubina-a-la-donostiarra-recetas-de-navidad
+
+¿Quieres cocinar algo más?
+
+>No
+Que aproveche! 
+Hasta pronto! :D
